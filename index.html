@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>Calculadora | Analizador Sintactido</title>
+  </head>
+  <body>
+    <main class="calculadora">
+      <h1>Analizador Sintactico</h1>
+      <form class="form__calculadora" onsubmit="handleSubmit(event)">
+        <label for="expression">Ingrese una expresión matemática:</label>
+        <input type="text" id="expression" name="expression" placeholder="2+3">
+        <button type="submit">Validar</button>
+        <p class="message" id="message"></p>
+      </form>
+    </main>
+  <script src="main"></script>
+  </body>
+</html>
