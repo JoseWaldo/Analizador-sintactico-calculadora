@@ -61,9 +61,9 @@ function tokenize(expression) {
   const tokens = [];
 
   let i = 0;
+  let numParentesis = 0;
   while (i < expression.length) {
     let char = expression[i];
-
     // Si el caracter es un número, crea un token para el número.
     if (/[0-9]/.test(char)) {
       let value = "";
@@ -101,12 +101,14 @@ function tokenize(expression) {
     // Si el caracter es un paréntesis izquierdo, crea un token para el paréntesis izquierdo.
     else if (char === "(") {
       tokens.push({ type: "left_paren", value: "(" });
+      numParentesis += 1;
       i++;
     }
 
     // Si el caracter es un paréntesis derecho, crea un token para el paréntesis derecho.
     else if (char === ")") {
       tokens.push({ type: "right_paren", value: ")" });
+      numParentesis -= 1;
       i++;
     }
 
@@ -120,6 +122,9 @@ function tokenize(expression) {
       throw new Error(`Token inválido: ${char}`);
     }
   }
+
+  if (numParentesis !== 0)
+    throw new Error("La cantidad de parentesis no concuerda");
 
   return tokens;
 }
@@ -144,5 +149,5 @@ function handleSubmit(event) {
 
   setTimeout(() => {
     messageOutput.textContent = "";
-  }, 5000);
+  }, 10000);
 }
